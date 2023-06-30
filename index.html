@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      <h2> انشاء منتج</h2>
+      
+      <div class="form-group">
+        <label for="product-name">اسم المنتج</label>
+        <input type="text" id="product-name" name="product-name" required>
+      </div>
+      
+      
+      
+      <label for="sub-images">اختر 6 صور لعرض منتجك</label>
+      <div class="sub-images-container">
+        <div class="form-group">
+          <label for="sub-image1-input" id="sub-image1-label" class="image-label">
+            <img id="sub-image1" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image1-input" name="sub-image1" accept="image/*" onchange="loadImage(event, 'sub-image1')" style="display: none;">
+          </label>
+        </div>
+      
+        <div class="form-group">
+          <label for="sub-image2-input" id="sub-image2-label" class="image-label">
+            <img id="sub-image2" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image2-input" name="sub-image2" accept="image/*" onchange="loadImage(event, 'sub-image2')" style="display: none;">
+          </label>
+        </div>
+      
+        <div class="form-group">
+          <label for="sub-image3-input" id="sub-image3-label" class="image-label">
+            <img id="sub-image3" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image3-input" name="sub-image3" accept="image/*" onchange="loadImage(event, 'sub-image3')" style="display: none;">
+          </label>
+        </div>
+      
+        <div class="form-group">
+          <label for="sub-image4-input" id="sub-image4-label" class="image-label">
+            <img id="sub-image4" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image4-input" name="sub-image4" accept="image/*" onchange="loadImage(event, 'sub-image4')" style="display: none;">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="sub-image5-input" id="sub-image5-label" class="image-label">
+            <img id="sub-image5" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image5-input" name="sub-image5" accept="image/*" onchange="loadImage(event, 'sub-image5')" style="display: none;">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="sub-image6-input" id="sub-image6-label" class="image-label">
+            <img id="sub-image6" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
+            <input type="file" id="sub-image6-input" name="sub-image6" accept="image/*" onchange="loadImage(event, 'sub-image6')" style="display: none;">
+          </label>
+        </div>
+      </div>
+      
+      
+      
+
+      <div class="form-group">
+        <label>اختيار الاشتراك:</label>
+        <div class="subscription-option">
+          <input type="radio" id="subscription-free" name="subscription" value="subscription-free" required>
+          <label class="subscription-label" for="subscription-free">اشتراك مجاني</label>
+        </div>
+        
+        <!-- تفاصيل الاشتراك المجاني -->
+        <div class="free-subscription-details">
+          <div class="form-group">
+            <label for="free-subscription-feature1">ميزة 1:</label>
+            <input type="text" id="free-subscription-feature1" name="free-subscription-feature1" required>
+          </div>
+          <div class="form-group">
+            <label for="free-subscription-feature2">ميزة 2:</label>
+            <input type="text" id="free-subscription-feature2" name="free-subscription-feature2" required>
+          </div>
+        </div>
+        
+        <div class="subscription-option">
+          <input type="radio" id="subscription-30" name="subscription" value="subscription-30" required>
+          <label class="subscription-label" for="subscription-30">اشتراك 30 يوم</label>
+        </div>
+        <div class="subscription-option">
+          <input type="radio" id="subscription-45" name="subscription" value="subscription-45" required>
+          <label class="subscription-label" for="subscription-45">اشتراك 45 يوم</label>
+        </div>
+        <div class="subscription-option">
+          <input type="radio" id="subscription-60" name="subscription" value="subscription-60" required>
+          <label class="subscription-label" for="subscription-60">اشتراك 60 يوم</label>
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-button">انشاء المنتج</button>
+    </div>
+
+    <script>
+      function loadImage(event, imageId) {
+  var file = event.target.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var image = document.getElementById(imageId);
+    image.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+
+  
+}
+document.getElementById('subscription-free').addEventListener('click',() =>{
+
+  var freeSubscriptionDetails = document.querySelector('.free-subscription-details');
+    if (document.getElementById('subscription-free').checked) {
+      freeSubscriptionDetails.classList.add('show');
+    } else {
+      freeSubscriptionDetails.classList.remove('show');
+    }
+
+    // إخفاء تفاصيل الاشتراك المجاني إذا تم اختيار اشتراك آخر
+    var otherSubscriptions = document.querySelectorAll('.subscription-option input[type="radio"]:not(#subscription-free)');
+    for (var i = 0; i < otherSubscriptions.length; i++) {
+      otherSubscriptions[i].addEventListener('click', function() {
+        freeSubscriptionDetails.classList.remove('show');
+      });
+    }
+})
+
+    </script>
+  </body>
+</html>

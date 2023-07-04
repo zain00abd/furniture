@@ -52,6 +52,9 @@ label {
 .image-label:hover {
   border-color: #555;
 }
+textarea{
+  width: 50%;
+}
 .sub-image {
   width: 100px;
   height: 100px;

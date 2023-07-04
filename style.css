@@ -204,3 +204,8 @@ input {
 p {
   margin-top: 20px;
 }
+@media screen and (max-width:750px){
+  textarea{
+    width: 100%;
+  }
+}

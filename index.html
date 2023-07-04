@@ -74,6 +74,11 @@
       </div>
 
       <div class="form-group">
+        <label for="free-subscription-feature2"> سعر المنتج </label>
+        <input type="number" id="price" name="price" required lang="en">
+      </div>            
+
+      <div class="form-group">
         <label>اختيار الاشتراك:</label>
         <div class="subscription-option">
           <input type="radio" id="subscription-free" name="subscription" value="subscription-free" required>
@@ -97,7 +102,6 @@
               <input type="number" id="free-subscription-feature2" name="free-subscription-feature2" required lang="en">
             </div>            
           </div>
-          
         </div>
         
         <div class="subscription-option">
@@ -158,7 +162,7 @@
 
             });
         }
-        else{ document.querySelector('.loading-container').style.display = 'none' }
+        else{ document.querySelector('.loading-container').style.display = 'none'; console.log('finish') }
 
     }
     document.querySelector('.submit-button').addEventListener('click',() =>{
@@ -195,12 +199,15 @@
 
     let inpPis1 = document.getElementById('free-subscription-feature1')
     let inpPis2 = document.getElementById('free-subscription-feature2')
+    let inpPis3 = document.getElementById('price')
 
     inpPis1.addEventListener('keyup',() =>{
       inpPis2.value = Math.round(inpPis1.value * 1.1)
+      inpPis3.value = inpPis2.value
     })
     inpPis2.addEventListener('keyup',() =>{
       inpPis1.value = Math.round(inpPis2.value / 1.1)
+      inpPis3.value = inpPis2.value
     })
 
   </script>

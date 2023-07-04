@@ -96,8 +96,8 @@ input {
   display: flex;
   justify-content: space-evenly;
 }
-.free-subscription-details input{
-  width: 70%;
+.free-subscription-details input,[name = 'price']{
+  width: 50%;
   height: 10px;
   border-radius: 7px;
   padding: 10px;
@@ -177,13 +177,13 @@ input {
 .loading-container {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #4f4f4f67; /* لون خلفية الـ "loading" */
   top: 0;
-  left: 0;
+  bottom: 0;
 }
 
 .loading-spinner {
@@ -206,6 +206,9 @@ p {
 }
 @media screen and (max-width:750px){
   textarea{
+    width: 100%;
+  }
+  [name = 'price']{
     width: 100%;
   }
 }

@@ -142,6 +142,9 @@
 
     let Allphoto = 1;
     let NameFile = document.getElementById('product-name')
+    let inpPis1 = document.getElementById('free-subscription-feature1')
+    let inpPis2 = document.getElementById('free-subscription-feature2')
+    let inpPis3 = document.getElementById('price')
 
     function uploadImage(fileId) {
         if(Allphoto < 7){
@@ -184,6 +187,7 @@
         var freeSubscriptionDetails = document.querySelector('.free-subscription-details');
         if (document.getElementById('subscription-free').checked) {
             freeSubscriptionDetails.classList.add('show');
+            inpPis1.focus()
         } else {
             freeSubscriptionDetails.classList.remove('show');
         }
@@ -197,10 +201,10 @@
         }
     })
 
-    let inpPis1 = document.getElementById('free-subscription-feature1')
-    let inpPis2 = document.getElementById('free-subscription-feature2')
-    let inpPis3 = document.getElementById('price')
-
+    inpPis1.addEventListener('focus',() =>{
+      inpPis2.value = Math.round(inpPis1.value * 1.1)
+      inpPis3.value = inpPis2.value
+    })
     inpPis1.addEventListener('keyup',() =>{
       inpPis2.value = Math.round(inpPis1.value * 1.1)
       inpPis3.value = inpPis2.value

@@ -211,4 +211,7 @@ p {
   [name = 'price']{
     width: 100%;
   }
+  .container{
+    padding: auto;
+  }
 }

@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+
+  <div style="display: none;" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+
     <div class="container">
       <h2> انشاء منتج</h2>
       
@@ -62,8 +68,10 @@
         </div>
       </div>
       
-      
-      
+      <div class="form-group">
+        <label for="product-name"> وصف المنتج </label>
+        <textarea style="padding: 10px; font-size: 15px; font-weight: 600; " name="" id="" cols="50" rows="5"></textarea>
+      </div>
 
       <div class="form-group">
         <label>اختيار الاشتراك:</label>
@@ -75,13 +83,21 @@
         <!-- تفاصيل الاشتراك المجاني -->
         <div class="free-subscription-details">
           <div class="form-group">
-            <label for="free-subscription-feature1">ميزة 1:</label>
-            <input type="text" id="free-subscription-feature1" name="free-subscription-feature1" required>
+            <label for="free-subscription-feature1"> يتم اضافة 10% على السعر المراد به كنسبة لارباح المتجر </label>
           </div>
-          <div class="form-group">
-            <label for="free-subscription-feature2">ميزة 2:</label>
-            <input type="text" id="free-subscription-feature2" name="free-subscription-feature2" required>
+
+          <div class="inp_value_price">
+            <div class="form-group">
+              <label for="free-subscription-feature1"> السعر المراد به </label>
+              <input type="number" id="free-subscription-feature1" name="free-subscription-feature1" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="free-subscription-feature2"> السعر المعروض </label>
+              <input type="number" id="free-subscription-feature2" name="free-subscription-feature2" required lang="en">
+            </div>            
           </div>
+          
         </div>
         
         <div class="subscription-option">
@@ -97,40 +113,112 @@
           <label class="subscription-label" for="subscription-60">اشتراك 60 يوم</label>
         </div>
       </div>
-      
       <button type="submit" class="submit-button">انشاء المنتج</button>
     </div>
 
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import { getDatabase, get, ref, push, set, onValue, } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+    import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-storage.js";
+
+    // تهيئة Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyBwZfny_2TzY0bkiLQaizOkXXZW7TmDdTo",
+        authDomain: "photo-b068f.firebaseapp.com",
+        databaseURL: "https://photo-b068f-default-rtdb.firebaseio.com",
+        projectId: "photo-b068f",
+        storageBucket: "photo-b068f.appspot.com",
+        messagingSenderId: "966297667659",
+        appId: "1:966297667659:web:910805bf7d904230a3e5ce"
+    };
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const storage = getStorage(app);
+
+    let Allphoto = 1;
+    let NameFile = document.getElementById('product-name')
+
+    function uploadImage(fileId) {
+        if(Allphoto < 7){
+
+            let fileInput = document.getElementById(`${fileId}`);
+            let file = fileInput.files[0];
+
+            let storageReference = storageRef(storage, `${NameFile.value}/` + file.name);
+            uploadBytes(storageReference, file).then((snapshot) => {
+                console.log("تم تحميل الصورة بنجاح");
+
+                getDownloadURL(snapshot.ref).then((downloadURL) => {
+                    console.log(downloadURL)
+                    Allphoto++
+                    uploadImage(`sub-image${Allphoto}-input`)
+                    const imagesRef = ref(database, "images");
+                    const newImageRef = push(imagesRef);});
+
+            });
+        }
+        else{ document.querySelector('.loading-container').style.display = 'none' }
+
+    }
+    document.querySelector('.submit-button').addEventListener('click',() =>{
+        if (NameFile.value !== ''){
+
+            uploadImage('sub-image1-input')
+            document.querySelector('.loading-container').style.display = 'flex'
+            // let Img = document.querySelectorAll('.sub-image')
+            // Img.forEach( lol =>{ 
+            //   console.log(lol.nextElementSibling.id)
+            // })
+
+        }
+        else{ NameFile.classList.add('erorr');console.log('1') }
+    })
+
+    document.getElementById('subscription-free').addEventListener('click',() =>{
+
+        var freeSubscriptionDetails = document.querySelector('.free-subscription-details');
+        if (document.getElementById('subscription-free').checked) {
+            freeSubscriptionDetails.classList.add('show');
+        } else {
+            freeSubscriptionDetails.classList.remove('show');
+        }
+
+        // إخفاء تفاصيل الاشتراك المجاني إذا تم اختيار اشتراك آخر
+        var otherSubscriptions = document.querySelectorAll('.subscription-option input[type="radio"]:not(#subscription-free)');
+        for (var i = 0; i < otherSubscriptions.length; i++) {
+            otherSubscriptions[i].addEventListener('click', function() {
+                freeSubscriptionDetails.classList.remove('show');
+            });
+        }
+    })
+
+    let inpPis1 = document.getElementById('free-subscription-feature1')
+    let inpPis2 = document.getElementById('free-subscription-feature2')
+
+    inpPis1.addEventListener('keyup',() =>{
+      inpPis2.value = Math.round(inpPis1.value * 1.1)
+    })
+    inpPis2.addEventListener('keyup',() =>{
+      inpPis1.value = Math.round(inpPis2.value / 1.1)
+    })
+
+  </script>
+
+
+
     <script>
-      function loadImage(event, imageId) {
-  var file = event.target.files[0];
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var image = document.getElementById(imageId);
-    image.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
+        function loadImage(event, imageId) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var image = document.getElementById(imageId);
+            image.src = e.target.result;
+            console.log(imageId)
 
-  
-}
-document.getElementById('subscription-free').addEventListener('click',() =>{
-
-  var freeSubscriptionDetails = document.querySelector('.free-subscription-details');
-    if (document.getElementById('subscription-free').checked) {
-      freeSubscriptionDetails.classList.add('show');
-    } else {
-      freeSubscriptionDetails.classList.remove('show');
+        };
+        reader.readAsDataURL(file);
     }
-
-    // إخفاء تفاصيل الاشتراك المجاني إذا تم اختيار اشتراك آخر
-    var otherSubscriptions = document.querySelectorAll('.subscription-option input[type="radio"]:not(#subscription-free)');
-    for (var i = 0; i < otherSubscriptions.length; i++) {
-      otherSubscriptions[i].addEventListener('click', function() {
-        freeSubscriptionDetails.classList.remove('show');
-      });
-    }
-})
-
     </script>
   </body>
 </html>

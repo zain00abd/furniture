@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="Bootstrab/css/bootstrap.css"> -->
     <title>Document</title>
 </head>
 <body>
@@ -28,49 +29,49 @@
         <div class="form-group">
           <label for="sub-image1-input" id="sub-image1-label" class="image-label">
             <img id="sub-image1" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image1-input" name="sub-image1" accept="image/*" onchange="loadImage(event, 'sub-image1')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image1-input" name="sub-image1" accept="image/*" onchange="loadImage(event, 'sub-image1')" style="display: none;">
           </label>
         </div>
       
         <div class="form-group">
           <label for="sub-image2-input" id="sub-image2-label" class="image-label">
             <img id="sub-image2" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image2-input" name="sub-image2" accept="image/*" onchange="loadImage(event, 'sub-image2')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image2-input" name="sub-image2" accept="image/*" onchange="loadImage(event, 'sub-image2')" style="display: none;">
           </label>
         </div>
       
         <div class="form-group">
           <label for="sub-image3-input" id="sub-image3-label" class="image-label">
             <img id="sub-image3" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image3-input" name="sub-image3" accept="image/*" onchange="loadImage(event, 'sub-image3')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image3-input" name="sub-image3" accept="image/*" onchange="loadImage(event, 'sub-image3')" style="display: none;">
           </label>
         </div>
       
         <div class="form-group">
           <label for="sub-image4-input" id="sub-image4-label" class="image-label">
             <img id="sub-image4" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image4-input" name="sub-image4" accept="image/*" onchange="loadImage(event, 'sub-image4')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image4-input" name="sub-image4" accept="image/*" onchange="loadImage(event, 'sub-image4')" style="display: none;">
           </label>
         </div>
 
         <div class="form-group">
           <label for="sub-image5-input" id="sub-image5-label" class="image-label">
             <img id="sub-image5" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image5-input" name="sub-image5" accept="image/*" onchange="loadImage(event, 'sub-image5')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image5-input" name="sub-image5" accept="image/*" onchange="loadImage(event, 'sub-image5')" style="display: none;">
           </label>
         </div>
 
         <div class="form-group">
           <label for="sub-image6-input" id="sub-image6-label" class="image-label">
             <img id="sub-image6" class="sub-image" src="https://4.bp.blogspot.com/-ULzmncU6Tec/Vqoo_BzwjAI/AAAAAAAASCk/iHFlQvwJhLc/s1600/abstract_bokeh-wallpaper-2560x1600-526x351.jpg" alt="الصورة المحددة">
-            <input type="file" id="sub-image6-input" name="sub-image6" accept="image/*" onchange="loadImage(event, 'sub-image6')" style="display: none;">
+            <input class="img_pro" type="file" id="sub-image6-input" name="sub-image6" accept="image/*" onchange="loadImage(event, 'sub-image6')" style="display: none;">
           </label>
         </div>
       </div>
       
       <div class="form-group">
         <label for="product-name"> وصف المنتج </label>
-        <textarea style="padding: 10px; font-size: 15px; font-weight: 600; " name="" id=""   rows="8"></textarea>
+        <textarea style="padding: 10px; font-size: 15px; font-weight: 600; " name="" id="notes"   rows="8"></textarea>
       </div>
 
       <div class="form-group">
@@ -117,6 +118,7 @@
           <label class="subscription-label" for="subscription-60">اشتراك 60 يوم</label>
         </div>
       </div>
+      <p style="display: none ;color: red; width: 100%; text-align: center;background-color: rgba(255, 0, 0, 0.229);font-weight: 600; font-size: 17px;"> برجاء اكمال بيانات المنتج </p>
       <button type="submit" class="submit-button">انشاء المنتج</button>
     </div>
 
@@ -126,6 +128,7 @@
     import { getDatabase, get, ref, push, set, onValue, } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
     import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-storage.js";
 
+    
     // تهيئة Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyBwZfny_2TzY0bkiLQaizOkXXZW7TmDdTo",
@@ -137,14 +140,18 @@
         appId: "1:966297667659:web:910805bf7d904230a3e5ce"
     };
     const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
+    const db = getDatabase(app);
     const storage = getStorage(app);
 
     let Allphoto = 1;
+    let supction;
+    let arrimgs = []
     let NameFile = document.getElementById('product-name')
+    let NotesFile = document.getElementById('notes')
     let inpPis1 = document.getElementById('free-subscription-feature1')
     let inpPis2 = document.getElementById('free-subscription-feature2')
     let inpPis3 = document.getElementById('price')
+    let radio1 = document.querySelectorAll("[name = 'subscription']")
 
     function uploadImage(fileId) {
         if(Allphoto < 7){
@@ -156,28 +163,32 @@
             uploadBytes(storageReference, file).then((snapshot) => {
                 console.log("تم تحميل الصورة بنجاح");
 
-                getDownloadURL(snapshot.ref).then((downloadURL) => {
-                    console.log(downloadURL)
-                    Allphoto++
-                    uploadImage(`sub-image${Allphoto}-input`)
-                    const imagesRef = ref(database, "images");
-                    const newImageRef = push(imagesRef);});
 
+                getDownloadURL(snapshot.ref).then((downloadURL) => {
+                  console.log(downloadURL)
+                  arrimgs.push(downloadURL)
+                  Allphoto++
+                  if(Allphoto == 7){
+                    uplouddata(); console.log(arrimgs) 
+                    setTimeout(() =>{
+                      location.reload()
+                    },1000)
+                  }
+                  });
             });
         }
-        else{ document.querySelector('.loading-container').style.display = 'none'; console.log('finish') }
 
     }
+    let Allimg = document.querySelectorAll('.img_pro')
     document.querySelector('.submit-button').addEventListener('click',() =>{
         if (NameFile.value !== ''){
 
-            uploadImage('sub-image1-input')
-            document.querySelector('.loading-container').style.display = 'flex'
-            // let Img = document.querySelectorAll('.sub-image')
-            // Img.forEach( lol =>{ 
-            //   console.log(lol.nextElementSibling.id)
-            // })
-
+          Allimg.forEach(btn =>{
+            console.log(btn.id)
+            uploadImage(btn.id)
+          })
+          console.log('tt')
+          document.querySelector('.loading-container').style.display = 'flex'
         }
         else{ NameFile.classList.add('erorr');console.log('1') }
     })
@@ -192,7 +203,6 @@
             freeSubscriptionDetails.classList.remove('show');
         }
 
-        // إخفاء تفاصيل الاشتراك المجاني إذا تم اختيار اشتراك آخر
         var otherSubscriptions = document.querySelectorAll('.subscription-option input[type="radio"]:not(#subscription-free)');
         for (var i = 0; i < otherSubscriptions.length; i++) {
             otherSubscriptions[i].addEventListener('click', function() {
@@ -200,6 +210,16 @@
             });
         }
     })
+
+
+
+      radio1.forEach(btn =>{
+        btn.addEventListener('click',() =>{
+          supction = btn.id
+        })
+      })
+
+    
 
     inpPis1.addEventListener('focus',() =>{
       inpPis2.value = Math.round(inpPis1.value * 1.1)
@@ -214,6 +234,34 @@
       inpPis3.value = inpPis2.value
     })
 
+    function uplouddata(){
+      const Ref = ref(db,'product')
+      let arrdata = []
+
+      let newpro = {
+        nameproduct:NameFile.value,
+        notes:NotesFile.value,
+        prise:inpPis3.value,
+        Subscription:supction,
+        imgs:
+        {
+          img1:arrimgs[0],
+          img2:arrimgs[1],
+          img3:arrimgs[2],
+          img4:arrimgs[3],
+          img5:arrimgs[4],
+          img6:arrimgs[5],
+        },
+      }
+      
+      arrdata.push(newpro)
+      push(Ref,arrdata[0]).then((isSub) =>{
+        document.querySelector('.loading-container').style.display = 'none'
+      })
+
+    }
+
+    NameFile.classList.add('erorr')
   </script>
 
 
@@ -231,5 +279,8 @@
         reader.readAsDataURL(file);
     }
     </script>
+    <!-- <script src="Bootstrab/umd/popper.js"></script>
+    <script src="Bootstrab/js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="Bootstrab/js/bootstrap.js"></script> -->
   </body>
 </html>
